@@ -1,0 +1,21 @@
+# Terraform local working dir
+**/.terraform/
+
+# Terraform state (never commit)
+**/*.tfstate
+**/*.tfstate.*
+**/terraform.tfstate.d/
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# Sensitive keys
+*.pem
+*.key
+
+# Local AWS creds
+.aws/
+
+# macOS noise
+.DS_Store
