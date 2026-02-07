@@ -46,50 +46,28 @@ Upon successful deployment, Terraform outputs the Jenkins public URL, instance I
 
 The system is explicitly validated through the following checks:
 
-Terraform configuration validates successfully
+- Terraform configuration validates successfully
+- Infrastructure is created without errors
+- Jenkins is reachable via port 8080
+- SSH access to the EC2 instance is functional
+- Jenkins completes initial setup and is operational
+- The EC2 instance assumes the expected IAM role
+- S3 read/write access is confirmed from the instance without AWS credentials
 
-Infrastructure is created without errors
+Validation evidence is provided in the `validation-screenshots/` directory, including:
 
-Jenkins is reachable via port 8080
-
-SSH access to the EC2 instance is functional
-
-Jenkins completes initial setup and is operational
-
-The EC2 instance assumes the expected IAM role
-
-S3 read/write access is confirmed from the instance without AWS credentials
-
-
-Validation evidence is provided in the validation-screenshots/ directory, including:
-
-Jenkins installation via user data
-
-Terraform initialization and validation
-
-Successful Terraform apply
-
-Jenkins dashboard access
-
-SSH access to the EC2 instance
-
-S3 upload, list, and delete operations performed using the instance IAM role
+- Jenkins installation via user data
+- Terraform initialization and validation
+- Successful Terraform apply
+- Jenkins dashboard access
+- SSH access to the EC2 instance
+- S3 upload, list, and delete operations performed using the instance IAM role
 
 ---
 
 ## Security Notes
 
-Terraform state files are intentionally excluded from version control.
-
-No AWS access keys or secrets are stored in this repository.
-
-All AWS service access from the EC2 instance is performed via IAM role assumption.
-
-Network access is restricted to explicitly defined CIDR ranges.
-
----
-
-## Outcome
-
-This system demonstrates a clean, repeatable Jenkins deployment on AWS using Terraform, aligned with real-world infrastructure practices.
-It reflects production-aware design principles including automated provisioning, secure access patterns, and verifiable system behavior.
+- Terraform state files are intentionally excluded from version control
+- No AWS access keys or secrets are stored in this repository
+- All AWS service access from the EC2 instance is performed via IAM role assumption
+- Network access is restricted to explicitly defined CIDR ranges
